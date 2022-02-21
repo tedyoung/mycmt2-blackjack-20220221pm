@@ -13,4 +13,12 @@ class CardDisplayTest {
         assertThat(card.display())
                 .isEqualTo("[30m┌─────────┐[1B[11D│10       │[1B[11D│         │[1B[11D│    ♣    │[1B[11D│         │[1B[11D│       10│[1B[11D└─────────┘");
     }
+
+    @Test
+    public void displayNonTenCardAsString() throws Exception {
+        Card card = new Card(Suit.DIAMONDS, Rank.JACK);
+
+        assertThat(card.display())
+                .isEqualTo("[31m┌─────────┐[1B[11D│J        │[1B[11D│         │[1B[11D│    ♦    │[1B[11D│         │[1B[11D│        J│[1B[11D└─────────┘");
+    }
 }
