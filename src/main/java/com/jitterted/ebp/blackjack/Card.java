@@ -1,5 +1,6 @@
 package com.jitterted.ebp.blackjack;
 
+// Value Object
 public class Card {
     private final Suit suit;
     private final Rank rank;

@@ -35,8 +35,10 @@ public class Hand {
         return handValue;
     }
 
-    String displayFirstCard() {
-        return ConsoleCard.display(cards.get(0));
+    // If return value is changed, does it change the class's state? Immutable: yes.
+    // Snapshot? It's immutable: yes.
+    public Card dealerFaceUpCard() {
+        return cards.get(0);
     }
 
     boolean dealerMustDrawCard() {
