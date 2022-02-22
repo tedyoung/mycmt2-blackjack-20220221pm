@@ -13,7 +13,7 @@ public class Hand {
     public Hand() {
     }
 
-    private int value() {
+    public int value() {
         int handValue = cards
                 .stream()
                 .mapToInt(Card::rankValue)
@@ -42,10 +42,6 @@ public class Hand {
         return value() <= 16;
     }
 
-    void display() {
-        System.out.println(ConsoleHand.cardsAsString(this));
-    }
-
     // Snapshot (point in time): copy
     // Consumers shouldn't be able to affect class's state: unmodifiable
     public List<Card> cards() {
@@ -68,11 +64,4 @@ public class Hand {
         return hand.value() < value();
     }
 
-    String displayValue() {
-        return String.valueOf(value());
-    }
-
-    public boolean valueEquals(int target) {
-        return value() == target;
-    }
 }
