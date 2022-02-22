@@ -6,14 +6,15 @@ import java.util.stream.Collectors;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
-public class ConsoleHand {
+// DTO-role -- private to the containing Adapter
+class ConsoleHand {
     // transform: Hand (DO) -> String (Console-specific)
-    public static String displayDealerFaceUpCard(Hand hand) {
+    static String displayDealerFaceUpCard(Hand hand) {
         return ConsoleCard.display(hand.dealerFaceUpCard());
     }
 
     // transform: Hand (DO) -> String (Console-specific)
-    public static String cardsAsString(Hand hand) {
+    static String cardsAsString(Hand hand) {
         return hand.cards().stream()
                    .map(ConsoleCard::display)
                    .collect(Collectors.joining(
