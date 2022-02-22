@@ -1,5 +1,8 @@
-package com.jitterted.ebp.blackjack;
+package com.jitterted.ebp.blackjack.adapter.in.console;
 
+import com.jitterted.ebp.blackjack.domain.Game;
+
+// Adapter Controller
 public class ConsoleGame {
 
     private final Game game;
@@ -25,6 +28,7 @@ public class ConsoleGame {
         Game.resetScreen();
     }
 
+    // Control (play) loop
     public void playerPlays() {
         while (!game.isPlayerDone()) {
             game.displayGameState();
@@ -33,6 +37,7 @@ public class ConsoleGame {
         }
     }
 
+    // translation of input to commands/queries against Domain
     public void handle(String command) {
         if (command.toLowerCase().startsWith("h")) {
             game.playerHits();

@@ -1,5 +1,8 @@
 package com.jitterted.ebp.blackjack;
 
+import com.jitterted.ebp.blackjack.adapter.in.console.ConsoleGame;
+import com.jitterted.ebp.blackjack.domain.Game;
+
 // Startup-Assembler class
 public class Blackjack {
 
