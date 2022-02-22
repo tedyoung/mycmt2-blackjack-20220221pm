@@ -6,7 +6,7 @@ import static org.fusesource.jansi.Ansi.ansi;
 
 public class ConsoleHand {
     // transform: Hand (DO) -> String (Console-specific)
-    static String displayFirstCard(Hand hand) {
+    static String displayDealerFaceUpCard(Hand hand) {
         return ConsoleCard.display(hand.dealerFaceUpCard());
     }
 
