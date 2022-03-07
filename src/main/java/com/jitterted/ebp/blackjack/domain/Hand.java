@@ -48,7 +48,11 @@ public class Hand {
         return List.copyOf(cards);
     }
 
+    // INVARIANT: not busted when calling this method
     public void drawFrom(Deck deck) {
+//        if (isBusted()) {
+//            throw new IllegalStateException();
+//        }
         cards.add(deck.draw());
     }
 
