@@ -45,6 +45,11 @@ public class WebIntegrationTest {
                .andExpect(status().isOk());
     }
 
+    @Test
+    public void postToStandCommandIsRedirection() throws Exception {
+        mockMvc.perform(post("/stand"))
+               .andExpect(status().is3xxRedirection());
+    }
 
 
 }
