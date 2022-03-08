@@ -20,23 +20,19 @@ public class BlackjackController {
     @PostMapping("/start-game")
     public String startGame() {
         game.initialDeal();
-        return "redirect:/game";
+        return redirectBasedOnGameState();
     }
 
     @GetMapping("/game")
     public String gameView(Model model) {
-        GameView gameView = GameView.of(game);
-        model.addAttribute("gameView", gameView);
+        model.addAttribute("gameView", GameView.of(game));
         return "blackjack";
     }
 
     @PostMapping("/hit")
     public String hitCommand() {
         game.playerHits();
-        if (game.isPlayerDone()) {
-            return "redirect:/done";
-        }
-        return "redirect:/game";
+        return redirectBasedOnGameState();
     }
 
     @GetMapping("/done")
@@ -49,7 +45,17 @@ public class BlackjackController {
     @PostMapping("/stand")
     public String standCommand() {
         game.playerStands();
-        return "redirect:/done";
+        return redirectBasedOnGameState();
+    }
+
+    // looks like a "decision", this is really a "mapping"
+    // (or a "transformation" of Game state to Page Template)
+    // An Enum representing that state would be great
+    private String redirectBasedOnGameState() {
+        if (game.isPlayerDone()) {
+            return "redirect:/done";
+        }
+        return "redirect:/game";
     }
 
 }
