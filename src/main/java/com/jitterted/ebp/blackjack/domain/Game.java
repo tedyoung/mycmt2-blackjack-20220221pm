@@ -76,28 +76,28 @@ public class Game {
     public void initialDeal() {
         dealRoundOfCards();
         dealRoundOfCards();
-        if (playerHand.hasBlackjack()) {
-            playerDone = true;
-            gameMonitor.roundCompleted(this);
-        }
+        updatePlayerDoneStateTo(playerHand.hasBlackjack());
     }
 
     public void playerHits() {
         playerHand.drawFrom(deck);
-        playerDone = playerHand.isBusted();
-        if (playerDone) {
-            gameMonitor.roundCompleted(this);
-        }
+        updatePlayerDoneStateTo(playerHand.isBusted());
     }
 
     public void playerStands() {
-        playerDone = true;
         dealerTurn();
-        gameMonitor.roundCompleted(this);
+        updatePlayerDoneStateTo(true);
     }
 
     public boolean isPlayerDone() {
         return playerDone;
+    }
+
+    private void updatePlayerDoneStateTo(boolean playerIsDone) {
+        playerDone = playerIsDone;
+        if (playerDone) {
+            gameMonitor.roundCompleted(this);
+        }
     }
 
 }
